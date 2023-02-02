@@ -19,7 +19,13 @@ namespace WallpaperChanger
         private static readonly int SPIF_UPDATEINIFILE = 0x01;
         private static readonly int SPIF_SENDWININICHANGE = 0x02;
 
-        Bitmap currentWallpaper = new Bitmap(GetDesktopWallpaper());
+        string initialWallpaper = GetDesktopWallpaper();
+
+        bool undoWallpaper = false;
+
+        string tempPath = System.IO.Path.GetTempPath();
+
+
 
         static string GetDesktopWallpaper()
         {
@@ -44,7 +50,9 @@ namespace WallpaperChanger
         {
             Console.WriteLine("FormWallpaperChanger_Load");
 
-            pictureBox1.Image = currentWallpaper;
+            MessageBox.Show(GetDesktopWallpaper());
+
+            pictureBox1.Image = new Bitmap(initialWallpaper);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
@@ -99,7 +107,35 @@ namespace WallpaperChanger
 
             SetDesktopWallpaper(directoryPath.Text);
 
+            undoWallpaper = true;
+
+            // Change color button:
+            //applyButton.BackColor = Color.Red;
+            //applyButton.ForeColor = Color.White;
+            //applyButton.Text = "Restore Wallpaper";
+
             MessageBox.Show("Wallpaper applied!");
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Undo_Click(object sender, EventArgs e)
+        {
+            SetDesktopWallpaper(initialWallpaper);
+
+            undoWallpaper = false;
+
+            // Change color button:
+            //Undo.BackColor = Color.Lime;
+            //Undo.ForeColor = Color.Black;
+            //Undo.Text = "";
+
+            MessageBox.Show("Wallpaper restored!");
+
+            return;
         }
     }
 }

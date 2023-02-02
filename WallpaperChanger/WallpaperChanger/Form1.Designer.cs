@@ -68,12 +68,13 @@
             this.pictureBox1.Size = new System.Drawing.Size(640, 327);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // directoryPath
             // 
             this.directoryPath.AutoSize = true;
             this.directoryPath.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.directoryPath.Location = new System.Drawing.Point(38, 211);
+            this.directoryPath.Location = new System.Drawing.Point(74, 211);
             this.directoryPath.Name = "directoryPath";
             this.directoryPath.Size = new System.Drawing.Size(90, 17);
             this.directoryPath.TabIndex = 3;
@@ -94,6 +95,7 @@
             this.Undo.Size = new System.Drawing.Size(52, 52);
             this.Undo.TabIndex = 4;
             this.Undo.UseVisualStyleBackColor = true;
+            this.Undo.Click += new System.EventHandler(this.Undo_Click);
             // 
             // Form1
             // 
@@ -106,8 +108,10 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.applyButton);
             this.Controls.Add(this.browsePicture);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Wallpaper Change Machine";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
